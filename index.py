@@ -1,8 +1,8 @@
 import http.client
-conn = http.client.HTTPSConnection("api.ocs.fr")
-conn.request("GET", "/web/v2/details/programme/AUNOMDEMAFIW0110779")
-response = conn.getresponse()
-content = response.read()
+from importer import Importer
 
-print("Welcome to Movie")
-print(content)
+baseUrl = 'api.ocs.fr'
+params = "https://api.ocs.fr/web/v2/rubriques/films?sort=new"
+
+ocs_importer = Importer('ocs')
+print(ocs_importer.execute(params))
