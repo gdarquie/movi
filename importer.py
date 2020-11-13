@@ -1,11 +1,10 @@
 import http.client
 
-
 class Importer:
     def __init__(self, service):
         self.service = service
 
-    def execute(self, params):
+    def execute(self, file, params):
         url = ''
         if self.service == "ocs":
             url = 'api.ocs.fr'
@@ -15,7 +14,7 @@ class Importer:
         response = conn.getresponse()
         content = response.read()
 
-        file = open('occ_raw_output', 'w')
+        file = open(file, 'w')
         file.write(content.decode("utf-8"))
         file.close()
 
